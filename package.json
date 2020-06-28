@@ -1,0 +1,29 @@
+{
+  "name": "5secs_game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "public/js/supp.js",
+  "scripts": {
+    "devStart": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/majbog/5secs_game.git"
+  },
+  "keywords": [],
+  "author": "majbog",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/majbog/5secs_game/issues"
+  },
+  "homepage": "https://github.com/majbog/5secs_game#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}

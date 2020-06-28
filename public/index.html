@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5 second Rule</title>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/styles/styles.css">
+</head>
+<body>
+    <div class = 'info-about'><p>made by a very nice gal<p></div>
+    <div class = "basic-game-container">
+        <div id = "main-hello"><h1>5 Second Rule game</h1></div>
+        <div class ="main-game-options">
+            <form action = 'game.html' id="form-name-game">
+                <label for="username">Your name?</label>
+                <input type="text" id="username" name="username" required>
+                <br>
+                <div id="what-prefers-container">
+                    <label class = "what-prefers" id="gen-new-game">Generate new game</label>
+                    <label class = "what-prefers" id="join-existing-game" >Join others</label>
+                </div>
+                <label for="room_id" class="game-id-part">Game id:</label>
+                <input type="text" id="room_id" name="room_id" class="game-id-part" required>
+                <input type="submit" id="go-play" value="GO!">
+            </form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="js/styles.js"></script>
+</body>
+</html>
