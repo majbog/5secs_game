@@ -2,7 +2,7 @@ $(function () {
     console.log('styles.js responding');
 
     function generateRoomId(){
-        let roomId = "";
+        let roomId = '';
         const availableCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnoprtuvwxyz0123456789!@#$$%^&*";
         for (let i=0;i<6;i++){
             roomId += availableCharacters.charAt(Math.floor(Math.random()*availableCharacters.length));
@@ -50,7 +50,9 @@ $(function () {
 
     $("#gen-new-game").click(function() {
             let roomName = generateRoomId();
-            $('#fgame').val(roomName);
+            console.log(roomName);
+            console.log($('#room_id'));
+            $('#room_id').val(roomName);
         }
     );
 
