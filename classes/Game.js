@@ -11,10 +11,14 @@ var Game = function (id) {
         this.players.push(user);
     };
 
-    this.canJoinGame = function () {
-        return !(this.alreadyStarted);  // can't join the game if it has already started
+    this.canJoinGame = function (user) {
+        // can't join the game if it has already started or 
+        let alreadyIn = this.players.find(player => player.name === user.name);
+        if (alreadyIn != undefined || this.alreadyStarted == true){
+            return false;
+        }else {return true;}
+        
     };
-
 
     this.startGame = function () {
         this.players[0].usersTurn = true;

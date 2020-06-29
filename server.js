@@ -10,6 +10,8 @@ const app  = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
+const startingPoint = '/';
+
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -24,23 +26,25 @@ io.on('connection', socket => {
 
         let user = new Player(socket.id, username);
 
-        console.log(games);
-
         var i = whichGame(room_id);
         if (i == -1){
             games.push(new Game(room_id));
             i = whichGame(room_id);
         }
-        console.log(i);
-        games[i].addPlayer(user);
-        socket.join(games[i].id);
-        io.to(games[i].id).emit('gameUsers', {game: games[i], users:games[i].players});
+        
+        if (games[i].canJoinGame(user) == false){
+            socket.emit('redirect', startingPoint);
+        }else{
+            game.addPlayer(user);
+            socket.join(game.id);
+            io.to(games[i].id).emit('gameUsers', {game: games[i], users: games[i].players});
+        }
+        
+        // console.log(i);
+        
 
 
     });
-
-
-
 
 
     //Broadcast when a user connects
