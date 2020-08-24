@@ -17,6 +17,7 @@ $(function () {
     let counterBorder = $("#num.counter");
     let counter = $(".counter");
     let decisionContainer = $(".decision");
+    let startGameButton = $("#start-game");
 
     $(".start-count").click(function doTheCountdown() {
         let i = 5;

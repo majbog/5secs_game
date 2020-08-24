@@ -17,13 +17,8 @@ socket.on('redirect', function(destination){
 
 socket.on('gameUsers', ({game, users}) =>{
     showWhatGame(game.id);
-    console.log(playersList);
-    console.log(users);
-    console.log(game);
-    allUsers(users);
+    listUsers(users);
 });
-
-
 
 
 socket.on('message', message => {
@@ -31,15 +26,11 @@ socket.on('message', message => {
 });
 
 
-
-
-
-function allUsers(users){
-    for (var i = 0; i < users.length; i++){
-        console.log(users[i]);
-        playersList.append('<li>'+ users[i].name + '</li>');
-    }
-}
+function listUsers(users) {
+    playersList.empty();
+    users.map(user => playersList.append($("<li></li>").text(user.name)));
+    console.log(playersList);
+  }
 
 function showWhatGame(gameName){
     var gameSpan = $('span#room_name');

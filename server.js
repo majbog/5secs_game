@@ -35,14 +35,22 @@ io.on('connection', socket => {
         if (games[i].canJoinGame(user) == false){
             socket.emit('redirect', startingPoint);
         }else{
-            game.addPlayer(user);
-            socket.join(game.id);
+            games[i].addPlayer(user);
+            socket.join(games[i].id);
             io.to(games[i].id).emit('gameUsers', {game: games[i], users: games[i].players});
         }
         
         // console.log(i);
         
-
+    socket.on('disconnect', () => {
+        console.log(`Socket ${socket.id} disconnects` );
+        
+        var i = whichGamePlayer(socket.id);
+        if (i >= 0){
+            games[i].deletePlayer(socket.id);
+            io.to(games[i].id).emit('gameUsers', {game: games[i], users: games[i].players});
+        }
+    })
 
     });
 
@@ -62,4 +70,9 @@ server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 function whichGame(game){
     let idx = games.findIndex(g => g.id == game);
     return idx;
+};
+
+function whichGamePlayer(userId){
+    gameIndx = games.findIndex(g => g.players.map(player => player.id).includes(userId))
+    return gameIndx;
 };

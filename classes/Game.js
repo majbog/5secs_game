@@ -11,6 +11,11 @@ var Game = function (id) {
         this.players.push(user);
     };
 
+    this.deletePlayer = function (userId) {
+        playerIndx = this.players.findIndex(player => player.id == userId);
+        this.players.splice(playerIndx,1);
+    }
+
     this.canJoinGame = function (user) {
         // can't join the game if it has already started or 
         let alreadyIn = this.players.find(player => player.name === user.name);
